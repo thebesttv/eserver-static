@@ -9,10 +9,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
-(setq package-archives
-	'(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+(if (string= (getenv "ELPA-SRC") "no-mirror")
+    (message "No mirror is used")
+  (message "Use tsinghua tuna mirror")
+  (setq package-archives
+        '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 	  ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-	  ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+	  ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/"))))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
