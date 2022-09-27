@@ -1,3 +1,6 @@
+# Use bash as shell
+SHELL := /bin/bash
+
 .PHONY: all clean		\
 	publish upload		\
 	server-start server-stop server-status	\
