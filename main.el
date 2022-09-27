@@ -10,7 +10,10 @@
 
 (require 'package)
 (if (string= (getenv "ELPA_SRC") "no_mirror")
-    (message "No mirror is used")
+    (progn
+      (message "No mirror is used")
+      (add-to-list 'package-archives
+                   '("melpa" . "https://melpa.org/packages/") t))
   (message "Use tsinghua tuna mirror")
   (setq package-archives
         '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
