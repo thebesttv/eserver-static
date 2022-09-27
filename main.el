@@ -15,9 +15,15 @@
 	  ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 (package-initialize)
 
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t) ; always ensure packages are installed
+
 ;; string manipulation
 (require 'subr-x)
-(require 's)
+(use-package s)
 
 ;; org publish
 (require 'org)
@@ -25,11 +31,11 @@
 (require 'ox-publish)
 
 ;; for citation
-(require 'citeproc)
+(use-package citeproc)
 (require 'oc-csl)
 
 (require 'font-lock)
-(require 'htmlize)
+(use-package htmlize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; parse arguments, get source and target
