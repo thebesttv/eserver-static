@@ -1,7 +1,7 @@
 .PHONY: all clean		\
 	publish upload		\
 	server-start server-stop server-status	\
-	mount unmount
+	target-dir mount unmount
 
 SCRIPT = $(abspath main.el)
 SOURCE = $(abspath blog)
@@ -13,7 +13,7 @@ all: mount clean publish server-start
 clean:
 	rm -rf ${TARGET}/*
 
-publish:
+publish: target-dir
 	emacs -Q \
 		--script ${SCRIPT} \
 		--source=${SOURCE} \
@@ -60,9 +60,11 @@ server-status:
 MOUNT_DOWN = unmounted
 MOUNT_STATUS = $(or $(shell mount -l -t tmpfs | grep ${TARGET}),${MOUNT_DOWN})
 
-mount:
-ifeq (${MOUNT_STATUS}, ${MOUNT_DOWN})
+target-dir:
 	mkdir -p ${TARGET}
+
+mount: target-dir
+ifeq (${MOUNT_STATUS}, ${MOUNT_DOWN})
 	sudo mount -v -o size=1G -t tmpfs none ${TARGET}
 else
 	@echo "Target already mounted at ${TARGET}"
