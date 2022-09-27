@@ -1,0 +1,9 @@
+#+title: EServer, but Static
+
+Trying to create a static version of EServer, so it can be hosted on
+GitHub pages.
+
+Features
+- posts in both HTML and plain org format
+  - =.html= and =.org= supported
+  - though not published in pdf, easily converted to it

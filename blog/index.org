@@ -1,0 +1,10 @@
+#+title: 小渴栈
+#+subtitle: 但是静态
+#+date: <2022-09-25 Sun 09:20>
+#+author: thebesttv
+
+之前的 EServer 是直接运行在 Emacs 上的, 有点怕出问题, 所以还是想弄一个静
+态的放到 GitHub Pages, 这样也省心.
+
+* 文章列表
+#+include: .sitemap.org
