@@ -1,0 +1,65 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Generate-target:
+    runs-on: ubuntu-latest
+    steps:
+      # prepare Emacs
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Generate Diagram
+        uses: githubocto/repo-visualizer@main
+        with:
+          excluded_paths: ".github"
+          should_push: false           # do not push, instead
+          artifact_name: 'diagram-svg' # generate an artifact
+      - name: Install Emacs
+        run: |
+          sudo snap install emacs --classic
+          emacs --version | head -n1
+      - name: Publish
+        run: |
+          make publish
+        env:
+          ELPA-SRC: no-mirror
+      - name: List current repo
+        run: |
+          ls -alhF
+      - name: Upload target
+        uses: actions/upload-artifact@v3
+        with:
+          name: target-dir
+          path: target
+
+  Publish-target:
+    runs-on: ubuntu-latest
+    needs: Generate-target
+    steps:
+      - name: Download target
+        uses: actions/download-artifact@v3
+        with:
+          name: target-dir
+          path: target
+      - name: Download diagram
+        uses: actions/download-artifact@v3
+        with:
+          name: diagram-svg
+          path: target
+      - name: List target directory
+        run: |
+          ls -alhF target/
+      - name: Pushes to GitHub Pages
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          source-directory: 'target'
+          destination-github-username: 'thebesttv'
+          destination-repository-name: 'thebesttv.github.io'
+          user-email: taojuntian@outlook.com
+          target-branch: main
