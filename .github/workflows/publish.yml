@@ -26,7 +26,7 @@ jobs:
         run: |
           make publish
         env:
-          ELPA-SRC: no-mirror
+          ELPA_SRC: no_mirror
       - name: List current repo
         run: |
           ls -alhF

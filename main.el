@@ -9,7 +9,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
-(if (string= (getenv "ELPA-SRC") "no-mirror")
+(if (string= (getenv "ELPA_SRC") "no_mirror")
     (message "No mirror is used")
   (message "Use tsinghua tuna mirror")
   (setq package-archives
