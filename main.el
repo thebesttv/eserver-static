@@ -90,6 +90,34 @@
   (funcall check-dir "Target" ess-target-dir))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Fix org-mode Chinese spacing
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; 下面一段是 zwz 的, 作者声明只适应 org-mode 8.0 以及以上版本
+(defun clear-single-linebreak-in-cjk-string (string)
+  "clear single line-break between cjk characters that is usually soft line-breaks"
+  (let* ((regexp "\\([\u4E00-\u9FA5]\\)\n\\([\u4E00-\u9FA5]\\)")
+         (start (string-match regexp string)))
+    (while start
+      (setq string (replace-match "\\1\\2" nil nil string)
+            start (string-match regexp string start))))
+  string)
+
+(defun ox-html-clear-single-linebreak-for-cjk (string backend info)
+  (when (org-export-derived-backend-p backend 'html)
+    (clear-single-linebreak-in-cjk-string string)))
+
+(defun tbt-org-fix-chinese-spacing ()
+  (require 'ox)
+  (unless (and (boundp 'org-chinese-spacing-fixed)
+               org-chinese-spacing-fixed)
+    (setq org-chinese-spacing-fixed t)
+    (add-to-list 'org-export-filter-final-output-functions
+                 'ox-html-clear-single-linebreak-for-cjk)))
+
+(tbt-org-fix-chinese-spacing)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; pre/post-amble, head
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
