@@ -290,7 +290,7 @@ Entries:
 ;;; publishing
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; no timestamp checking, always publish all files
+;;; No timestamp checking, always publish all files
 (setq org-publish-use-timestamps-flag nil)
 
 (setq org-publish-project-alist
