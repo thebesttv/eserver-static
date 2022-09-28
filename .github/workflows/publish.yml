@@ -72,6 +72,9 @@ jobs:
         with:
           name: diagram-svg
           path: target
+      - name: Remove background of diagram
+        run: |
+          sed -i "s/background:white;//" target/diagram.svg
       - name: List target directory
         run: |
           ls -alhF target/
