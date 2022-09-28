@@ -295,6 +295,9 @@ Entries:
 
 ;;; Evaluate codeblocks without confirmation when export
 (setq org-confirm-babel-evaluate nil)
+;;; Use smart quotes on export
+(setq org-export-with-smart-quotes t)
+
 (setq org-publish-project-alist
       `(("ess-notes"
          :base-directory ,ess-source-dir
