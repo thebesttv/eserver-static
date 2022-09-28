@@ -11,6 +11,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
+
+      - name: Restore mtime
+        run: |
+          sudo apt -y install git-restore-mtime
+          git restore-mtime
+
       - name: Generate Diagram
         uses: githubocto/repo-visualizer@main
         with:
