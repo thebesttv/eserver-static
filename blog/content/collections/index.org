@@ -275,6 +275,7 @@
   #+end_quote
 
 ** 关于健康 --- 留得青山在, 不怕没柴烧
+
 - [[https://web.archive.org/web/20100815083705/http://sheddingbikes.com/posts/1281257293.html][Common Programmer Health Problems]]
   /Learn Python The Hard Way/ 的作者关于程序员健康的建议
   #+begin_quote
@@ -294,6 +295,7 @@
 - [[https://mp.weixin.qq.com/s/i7xeJArw5GN-cgZo3lIAHA][每天戴耳机超过一小时，多久会聋？]] 555要少戴耳机了
 
 ** 关于编码 --- UTF-8 遍地开花
+
 - [[http://www.hanselman.com/blog/why-the-askobama-tweet-was-garbled-on-screen-know-your-utf8-unicode-ascii-and-ansi-decoding-mr-president][Why the #AskObama Tweet was Garbled on Screen: Know your UTF-8,
   Unicode, ASCII and ANSI Decoding Mr. President]]
 - [[https://stackoverflow.com/questions/9254891/what-does-content-type-application-json-charset-utf-8-really-mean][What does “Content-type: application/json; charset=utf-8” really
