@@ -9,9 +9,19 @@ jobs:
   Generate-target:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Emacs
+        run: |
+          sudo snap install emacs --classic
+          emacs --version | head -n1
+      - name: Set time-zone to ShangHai
+        run: |
+          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          date
+          emacs -Q --batch --eval "(print (current-time-zone))"
+          emacs -Q --batch --eval "(print (current-time-string))"
+
       - name: Checkout Repo
         uses: actions/checkout@v3
-
       - name: Restore mtime
         run: |
           sudo apt -y install git-restore-mtime > /dev/null
@@ -26,16 +36,7 @@ jobs:
           excluded_paths: ".github"
           should_push: false           # do not push, instead,
           artifact_name: 'diagram-svg' # generate an artifact
-      - name: Install Emacs
-        run: |
-          sudo snap install emacs --classic
-          emacs --version | head -n1
-      - name: Set time-zone to ShangHai
-        run: |
-          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-          date
-          emacs -Q --batch --eval "(print (current-time-zone))"
-          emacs -Q --batch --eval "(print (current-time-string))"
+
       - name: Publish
         run: make publish
         env:
