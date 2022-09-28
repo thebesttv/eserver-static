@@ -22,6 +22,12 @@ jobs:
         run: |
           sudo snap install emacs --classic
           emacs --version | head -n1
+      - name: Set time-zone to ShangHai
+        run: |
+          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          date
+          emacs -Q --batch --eval "(print (current-time-zone))"
+          emacs -Q --batch --eval "(print (current-time-string))"
       - name: Publish
         run: make publish
         env:
