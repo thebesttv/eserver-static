@@ -14,7 +14,7 @@ jobs:
 
       - name: Restore mtime
         run: |
-          sudo apt -qq -y install git-restore-mtime
+          sudo apt -y install git-restore-mtime > /dev/null
           git restore-mtime
           ls -alhF
           ls -alhF blog
