@@ -54,13 +54,13 @@
       "<a href=\"https://github.com/thebesttv/thebesttv.github.io/blob/main/%s\">%s</a>")
 (setq ess-google-tag
       "<!-- Google tag (gtag.js) -->
-<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-06N8YBQEG3\"></script>
+<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-21YM95T3BQ\"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-06N8YBQEG3');
+  gtag('config', 'G-21YM95T3BQ');
 </script>\n")
 
 ;;; parse arguments
@@ -232,13 +232,13 @@ Entries:
          (pair (ess-input-file-level info))
          (input-file (car pair))
          (level (cdr pair)))
-    (concat (apply org-html--build-head args)
+    (concat ess-google-tag
+            (apply org-html--build-head args)
             ;; input-file "\n"
             "<!-- CSS -->\n"
             (ess-remote-css "https://unpkg.com/latex.css/style.css")
             (ess-local-css level "css/org-default.css")
-            (ess-local-css level "css/style.css")
-            ess-google-tag)))
+            (ess-local-css level "css/style.css"))))
 
 (advice-add 'org-html--build-head :around #'ess-html-head)
 
