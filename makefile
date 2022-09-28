@@ -9,7 +9,6 @@ SHELL := /bin/bash
 SCRIPT = $(abspath main.el)
 SOURCE = $(abspath blog)
 TARGET = $(abspath target)
-REPO = $(abspath repo)
 
 all: mount clean publish server-start
 
@@ -23,11 +22,6 @@ publish: target-dir
 		--target=${TARGET}
 # remove sitemap
 	rm ${TARGET}/.sitemap.{org,html}
-
-upload: clean publish
-	rm -rf ${REPO}/*
-	cp -a ${TARGET}/* ${REPO}
-	cd ${REPO} && git add -A . && git commit -m "$(shell date)" && git push
 
 ################################################################
 # local http server
