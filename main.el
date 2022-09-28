@@ -293,6 +293,8 @@ Entries:
 ;;; No timestamp checking, always publish all files
 (setq org-publish-use-timestamps-flag nil)
 
+;;; Evaluate codeblocks without confirmation when export
+(setq org-confirm-babel-evaluate nil)
 (setq org-publish-project-alist
       `(("ess-notes"
          :base-directory ,ess-source-dir
