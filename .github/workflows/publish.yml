@@ -1,6 +1,8 @@
 name: Publish to GitHub Pages
 
 on:
+  schedule:
+    - cron: '33 18 * * *'       # UTC 18:33 => UTC+8 2:33
   push:
     branches:
       - main
