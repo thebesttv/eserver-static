@@ -20,8 +20,14 @@ jobs:
           emacs -Q --batch --eval "(print (current-time-zone))"
           emacs -Q --batch --eval "(print (current-time-string))"
 
-      - name: Checkout Repo
+      - name: Checkout repo (full history)
         uses: actions/checkout@v3
+        with:
+          # from https://github.com/marketplace/actions/git-restore-mtime
+          # git-restore-mtime uses the ref log to find the correct
+          # timestamp for each file.  This requires a full git history.
+          # The default value (1) creates a shallow checkout.
+          fetch-depth: 0
       - name: Restore mtime
         run: |
           sudo apt -y install git-restore-mtime > /dev/null
