@@ -16,6 +16,8 @@ jobs:
         run: |
           sudo apt -qq -y install git-restore-mtime
           git restore-mtime
+          ls -alhF
+          ls -alhF blog
 
       - name: Generate Diagram
         uses: githubocto/repo-visualizer@main
