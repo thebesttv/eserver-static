@@ -41,7 +41,7 @@ jobs:
         uses: githubocto/repo-visualizer@main
         with:
           output_file: "diagram.svg"
-          excluded_paths: ".github"
+          excluded_paths: ".github,.gitignore"
           should_push: false           # do not push, instead,
           artifact_name: 'diagram-svg' # generate an artifact
 
