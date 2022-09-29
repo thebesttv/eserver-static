@@ -6,7 +6,8 @@ SHELL := /bin/bash
 	server-start server-stop server-status	\
 	target-dir mount unmount
 
-SCRIPT = $(abspath main.el)
+MAIN   = $(abspath main.el)
+SCRIPT = $(abspath blog.el)
 SOURCE = $(abspath blog)
 TARGET = $(abspath target)
 
@@ -16,8 +17,9 @@ clean:
 	rm -rf ${TARGET}/*
 
 publish: target-dir
-	emacs -Q \
-		--script ${SCRIPT} \
+	emacs -Q --batch \
+		--load=${MAIN} \
+		--load=${SCRIPT} \
 		--source=${SOURCE} \
 		--target=${TARGET}
 # remove sitemap
