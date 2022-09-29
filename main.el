@@ -5,7 +5,8 @@
 ;;; - `org-html-inner-template'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; prepare needed packages
+;;; Dependencies
+;;;   Setup package source and install `use-package'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
@@ -21,13 +22,14 @@
 	  ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/"))))
 (package-initialize)
 
+;;; install `use-package' if not already installed
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
 (require 'use-package)
 (setq use-package-always-ensure t) ; always ensure packages are installed
 
-;; string manipulation
+;;; string manipulation
 (require 'subr-x)
 (use-package s)
 
