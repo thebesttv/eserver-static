@@ -554,6 +554,11 @@ Cloudflare 的[[https://blog.cloudflare.com/][博客]]有不少关于熵和随�
   - 还有人拿它来可视化论坛的帖子:
     [[https://edgeryders.eu/t/visualizing-our-7-years-of-online-dialogue-with-gource/11905][Visualizing our 7 years of online dialogue with Gource]]
 
+** 关于网页​---HTML & CSS
+
+- [[https://secretgeek.github.io/html_wysiwyg/html.html][This page is a truly naked, brutalist html quine.]]
+  在网页上展示网页源码
+
 * 我想玩的
 
 大概是我想玩的各种游戏, 但因为事情好多好多, 而且只有一个集显笔记本,
