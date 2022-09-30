@@ -2,7 +2,7 @@
 SHELL := /bin/bash
 
 .PHONY: all clean		\
-	publish			\
+	publish verify		\
 	server-start server-stop server-status	\
 	target-dir mount unmount
 
@@ -10,6 +10,7 @@ MAIN   = $(abspath main.el)
 SCRIPT = $(abspath blog.el)
 SOURCE = $(abspath blog)
 TARGET = $(abspath target)
+VERIFY = $(abspath blog-verify.py)
 
 all: mount clean publish server-start
 
@@ -24,6 +25,9 @@ publish: target-dir
 		--target=${TARGET}
 # remove sitemap
 	rm ${TARGET}/.sitemap.{org,html}
+
+verify: target-dir
+	find ${TARGET} -name '*.html' | xargs python3 ${VERIFY}
 
 ################################################################
 # local http server
