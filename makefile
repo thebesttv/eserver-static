@@ -2,7 +2,7 @@
 SHELL := /bin/bash
 
 .PHONY: all clean		\
-	publish upload		\
+	publish			\
 	server-start server-stop server-status	\
 	target-dir mount unmount
 
