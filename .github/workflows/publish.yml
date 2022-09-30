@@ -55,6 +55,7 @@ jobs:
 
       - name: Verify target
         run: |
+          pip3 install beautifulsoup4
           make verify
       - name: Upload target
         uses: actions/upload-artifact@v3
