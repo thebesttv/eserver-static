@@ -190,6 +190,18 @@ Entries:
             :around #'ess-html-inner-template)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Process produced HTML doc
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun ess/blog-html-template (org-html-template &rest args)
+  (replace-regexp-in-string
+   (regexp-quote "\u200B") ""           ; remove ZERO WIDTH SPACE
+   (apply org-html-template args)))
+
+(advice-add 'org-html-template
+            :around #'ess/blog-html-template)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; macros
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
