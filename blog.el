@@ -220,21 +220,21 @@ Entries:
   (ess-org-macro
    "image"
    '(eval (concat
-           (format "#+attr_html: :width %s%% :style margin-left: auto; margin-right: auto;\n" $1)
-           (unless (string-empty-p $2)
-             (format "#+attr_latex: :width %s" $2)))))
+           (format "#+attr_html: :width %s%% :style margin-left: auto; margin-right: auto;" $1)
+           (when (and (stringp $2) (not (string-empty-p $2)))
+             (format "\n#+attr_latex: :width %s" $2)))))
   ;; usage: {{{fig(aption, name, [html-width], [latex-width])}}}
   (ess-org-macro
    "fig"
    '(eval (concat
            ;; name & caption
-           (format "#+caption: %s\n#+name: %s\n" $1 $2)
+           (format "#+caption: %s\n#+name: %s" $1 $2)
            ;; html-width
-           (unless (string-empty-p $3)
-             (format "#+attr_html: :width %s%% :style margin-left: auto; margin-right: auto;\n" $3))
+           (when (and (stringp $3) (not (string-empty-p $3)))
+             (format "\n#+attr_html: :width %s%% :style margin-left: auto; margin-right: auto;" $3))
            ;; latex-width
-           (unless (string-empty-p $4)
-             (format "#+attr_latex: :width %s" $4)))))))
+           (when (and (stringp $4) (not (string-empty-p $4)))
+             (format "\n#+attr_latex: :width %s" $4)))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; publishing
