@@ -157,13 +157,17 @@ Entries:
                     "index.html")
             "</nav>\n")))
 
-(defun ess-local-css (level path)
-  (format "<link rel=\"stylesheet\" type=\"text/css\" href=\"%s%s\"/>\n"
-          (s-repeat level "../") path))
+(defun ess-html-link (rel type href &optional level)
+  (if (null level)
+      ;; remove link, no level
+      (format "<link rel=\"%s\" type=\"%s\" href=\"%s\">\n"
+              rel type href)
+    ;; local link, with level
+    (format "<link rel=\"%s\" type=\"%s\" href=\"%s%s\">\n"
+            rel type (s-repeat level "../") href)))
 
-(defun ess-remote-css (url)
-  (format "<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\"/>\n"
-          url))
+(defun ess-html-css (path &optional level)
+  (ess-html-link "stylesheet" "text/css" path level))
 
 (defun ess-html-head (org-html--build-head &rest args)
   "Add some more headlines."
@@ -174,9 +178,9 @@ Entries:
     (concat ess-google-tag
             (apply org-html--build-head args)
             "<!-- CSS -->\n"
-            (ess-remote-css "https://unpkg.com/latex.css/style.css")
-            (ess-local-css level "css/org-default.css")
-            (ess-local-css level "css/style.css"))))
+            (ess-html-css "https://unpkg.com/latex.css/style.css")
+            (ess-html-css "css/org-default.css" level)
+            (ess-html-css "css/style.css" level))))
 
 (advice-add 'org-html--build-head :around #'ess-html-head)
 
