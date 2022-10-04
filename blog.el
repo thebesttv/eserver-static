@@ -166,6 +166,9 @@ Entries:
     (format "<link rel=\"%s\" type=\"%s\" href=\"%s%s\">\n"
             rel type (s-repeat level "../") href)))
 
+(defun ess-html-favicon (path level)
+  (ess-html-link "icon" "image/x-icon" path level))
+
 (defun ess-html-css (path &optional level)
   (ess-html-link "stylesheet" "text/css" path level))
 
@@ -176,6 +179,8 @@ Entries:
          (input-file (car pair))
          (level (cdr pair)))
     (concat ess-google-tag
+            "<!-- favicon -->\n"
+            (ess-html-favicon "favicon.ico" level)
             (apply org-html--build-head args)
             "<!-- CSS -->\n"
             (ess-html-css "https://unpkg.com/latex.css/style.css")
