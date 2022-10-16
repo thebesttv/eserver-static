@@ -276,6 +276,10 @@
   Take Umbrage.  Violators Will ...
   #+end_quote
 
+** 关于死亡 --- leave my mark
+
+- [[https://mp.weixin.qq.com/s/uOjpkR2924meycrlhf9VEw][一位25岁的模型玩家去世了，他的母亲决定继承他的遗志。]]
+
 ** 关于健康 --- 留得青山在, 不怕没柴烧
 
 - [[https://web.archive.org/web/20100815083705/http://sheddingbikes.com/posts/1281257293.html][Common Programmer Health Problems]]
