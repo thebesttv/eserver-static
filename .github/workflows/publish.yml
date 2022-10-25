@@ -87,6 +87,13 @@ jobs:
       - name: Remove background of diagram
         run: |
           sed -i "s/background:white;//" target/diagram.svg
+      - name: Bypass Jekyll processing
+        # bypass Jekyll processing, so files or directories that start
+        # with underscores are allowed, see
+        # https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
+        run: |
+          touch target/.nojekyll
+
       - name: List target directory
         run: |
           ls -alhF target/
