@@ -269,6 +269,7 @@ Entries:
          ;; Generic properties
          ;;
          :with-toc t
+         :language "zh-CN"
 
          ;;
          ;; HTML specific properties
