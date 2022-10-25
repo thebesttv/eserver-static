@@ -152,9 +152,13 @@ Entries:
          (input-file (car pair))
          (level (cdr pair)))
     (concat "<nav class=\"org-center\">\n"
+            ;; link to home
             (format "<a href=\"%s%s\">Home</a>\n"
                     (s-repeat level "../")
                     "index.html")
+            ;; search block
+            "<div id=\"search\"></div>\n"
+            "<hr>\n"
             "</nav>\n")))
 
 (defun ess-html-link (rel type href &optional level)
@@ -172,6 +176,17 @@ Entries:
 (defun ess-html-css (path &optional level)
   (ess-html-link "stylesheet" "text/css" path level))
 
+(defun ess-html-head-pagefind (level)
+  (concat "<!-- pagefind -->\n"
+          (ess-html-css "_pagefind/pagefind-ui.css" level)
+          (format "<script src=\"%s%s\" type=\"text/javascript\"></script>\n"
+                  (s-repeat level "../") "_pagefind/pagefind-ui.js")
+          "<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({element: \"#search\", showImages: false, resetStyles: false});
+  });
+</script>\n"))
+
 (defun ess-html-head (org-html--build-head &rest args)
   "Add some more headlines."
   (let* ((info (car args))
@@ -185,7 +200,9 @@ Entries:
             "<!-- CSS -->\n"
             (ess-html-css "https://unpkg.com/latex.css/style.css")
             (ess-html-css "css/org-default.css" level)
-            (ess-html-css "css/style.css" level))))
+            (ess-html-css "css/style.css" level)
+            (ess-html-head-pagefind level)
+            )))
 
 (advice-add 'org-html--build-head :around #'ess-html-head)
 

@@ -53,6 +53,13 @@ jobs:
         run: |
           ls -alhF
 
+      - name: Setup Node environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Generate pagefind
+        run: make pagefind
+
       - name: Verify target
         run: |
           pip3 install beautifulsoup4 > /dev/null

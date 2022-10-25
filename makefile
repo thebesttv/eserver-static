@@ -26,6 +26,10 @@ publish: target-dir
 # remove sitemap
 	rm ${TARGET}/.sitemap.{org,html}
 
+# this should be run after publish
+pagefind: target-dir
+	npx -y pagefind --source ${TARGET}
+
 verify: target-dir
 	find ${TARGET} -name '*.html' | xargs python3 ${VERIFY}
 
