@@ -274,6 +274,21 @@ Entries:
 ;;; Use smart quotes on export
 (setq org-export-with-smart-quotes t)
 
+(setq ess-exclude-sitemap-begin
+      (concat
+       "# exclude sitemap from pagefind processing by wrapping it around a div\n"
+       "# block tagged with \"data-pagefind-ignore\"\n"
+       "#+begin_export html\n"
+       "<div data-pagefind-ignore=\"all\">\n"
+       "#+end_export\n"))
+
+(setq ess-exclude-sitemap-end
+      (concat
+       "\n"
+       "#+begin_export html\n"
+       "</div>\n"
+       "#+end_export\n"))
+
 (setq org-publish-project-alist
       `(("ess-notes"
          :base-directory ,ess-source-dir
@@ -325,7 +340,10 @@ Entries:
          :sitemap-filename ".sitemap.org"
          :sitemap-function (lambda (title list)
                              ;; do not add title, only export the list
-                             (concat (org-list-to-org list)))
+                             (concat
+                              ess-exclude-sitemap-begin
+                              (org-list-to-org list)
+                              ess-exclude-sitemap-end))
          ;; sort files from newest to oldest
          :sitemap-sort-files anti-chronologically
          ;; add timestamp
