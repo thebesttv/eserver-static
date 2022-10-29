@@ -3,6 +3,7 @@ SHELL := /bin/bash
 
 .PHONY: all clean		\
 	publish verify		\
+	pagefind		\
 	server-start server-stop server-status	\
 	target-dir mount unmount
 
