@@ -62,7 +62,7 @@ jobs:
         with:
           timeout_minutes: 2
           max_attempts: 3
-          retry_on: error
+          retry_on: any
           command: make pagefind
           on_retry_command: |
             # cleanup before retry
