@@ -1,0 +1,50 @@
+#+title: Info
+#+date: <2022-11-26 Sat 14:36>
+#+author: thebesttv
+
+* Commands
+
+** Navigation
+
+- =d=: go to the top directory
+
+** Others
+
+- =L=: shows a TOC of the current manual, e.g. TOC of the =info= node:
+  #+begin_example
+  Top
+  Getting Started
+  	Help-Small-Screen
+  	Help
+  	Help-P
+  	Help-^L
+  	Help-Inv
+  		Help-]
+  		Help-]
+  		Help-]
+  	Help-M
+  		Help-FOO
+  		Help-FOO
+  		Help-FOO
+  	Help-Xref
+  		Help-Cross
+  	Help-Int
+  	Help-Q
+  Advanced
+  	Search Text
+  	Search Index
+  	Go to node
+  	Choose menu subtopic
+  	Create Info buffer
+  	Emacs Info Variables
+  Further Reading
+  GNU Free Documentation License
+  Index
+  #+end_example
+
+* Multiple buffers
+
+- =M-n= (=clone-buffer=) :: clones the current Info buffer, so you can
+  have multiple independent Info buffers.
+- =C-h R= (=info-display-manual=) :: go to a specific manual, creating a
+  new Info buffer if the selected manual does not exist.
