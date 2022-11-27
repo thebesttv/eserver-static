@@ -1,0 +1,126 @@
+#+title: Emacs
+#+date: <2022-11-26 Sat 14:36>
+#+author: thebesttv
+
+[[info:emacs#Moving Point]]
+
+* Input
+
+Typing the help character (=C-h= or =<F1>=) after a prefix key displays
+a list of the commands starting with that prefix.  The sole exception to
+this rule is =<ESC>=: =<ESC> C-h= is equivalent to =C-M-h=
+(=mark-defun=).  You can, however, use =<F1>= instead: =<ESC> <F1>=
+displays a list of commands starting with =<ESC>=.
+
+* Mode line
+
+The format of mode line is specified by =mode-line-format=:
+#+begin_src elisp
+  (setq mode-line-format
+        '("%e"
+          mode-line-front-space           ; " "
+          mode-line-mule-info             ; multilingual info
+          mode-line-client
+          mode-line-modified
+          mode-line-remote
+          mode-line-frame-identification
+          mode-line-buffer-identification
+          "   "
+          mode-line-position
+          (vc-mode vc-mode)
+          "  "
+          mode-line-modes
+          mode-line-misc-info
+          mode-line-end-spaces))
+#+end_src
+
+** End-of-line format
+
+Four variables control how EOL format is displayed in mode line:
+- =eol-mnemonic-unix=: UNIX-like format (LF), initially ":"
+- =eol-mnemonic-dos=: DOS-like format (CRLF), initially "(DOS)"
+- =eol-mnemonic-mac=: MAC-like format (CR), initially "(Mac)"
+- =eol-mnemonic-undecided=: displayed when end-of-line format is not yet
+  determined, initially ":"
+
+* Character
+
+- =C-x == (=what-cursor-position=) :: Describes the character at point,
+  showing its code (in octal, decimal, and hex), name, position, etc.
+
+* Point
+
+Each *window* has its own point.  Even if multiple windows are
+displaying the same buffer, each one can have a different value of
+point.
+
+* Input
+
+** =C-x 8= prefix command
+
+A few common Unicode characters can be inserted via prefix command =C-x
+8= (use =C-x 8 C-h= or =C-x 8 <f1>= for the whole list):
+- quotes & brackets
+  - =C-x 8 [= inserts =‘= (U+2018 LEFT SINGLE QUOTATION MARK)
+  - =C-x 8 ]= inserts =’= (U+2019 RIGHT SINGLE QUOTATION MARK)
+  - =C-x 8 {= inserts =“= (U+201C LEFT DOUBLE QUOTATION MARK)
+  - =C-x 8 }= inserts =”= (U+201D RIGHT DOUBLE QUOTATION MARK)
+  - =C-x 8 <= inserts =«=
+  - =C-x 8 >= inserts =»=
+- upside-down symbols
+  - =C-x 8 != inserts =¡=
+  - =C-x 8 ?= inserts =¿=
+- others
+  - =C-x 8 += inserts =±=
+  - =C-x 8 .= inserts =·=
+  - =C-x 8 Y= inserts =¥= (e.g. 1024¥)
+  - =C-x 8 o= inserts =°= (e.g. 18C°)
+- arrows
+  - =C-x 8 a <= inserts =←= (same as =\gets= in Org mode: \gets)
+  - =C-x 8 a >= inserts =→= (same as =\to= in Org mode: \to)
+  - =C-x 8 a == inserts =↔=
+- math symbols
+  - =C-x 8 _ <= inserts =≤=
+  - =C-x 8 _ >= inserts =≥=
+  - =C-x 8 / == inserts =≠=
+  - =C-x 8 x= inserts =×=
+  - =C-x 8 / /= inserts =÷=
+- fractions
+  - =C-x 8 1 / 2= inserts =½=
+  - =C-x 8 1 / 4= inserts =¼=
+  - =C-x 8 3 / 4= inserts =¾=
+
+Alternatively, you can use =C-x 8 <RET>= (=insert-char=).  This prompts
+for the Unicode name or hexadecimal code-point of a character.  For
+example, =C-x 8 <RET> left single quotation mark= and =C-x 8 <RET> 2018=
+is the same as =C-x 8 [=, all producing =‘=.
+
+Another way to input quotations is to use [[#electric-quote-mode][electric quote mode]].
+
+* Indentation
+
+* Minor modes
+
+** Overwrite mode
+
+** Auto fill mode
+
+split lines automatically when they get too long
+
+** Electric quote mode
+:PROPERTIES:
+:CUSTOM_ID: electric-quote-mode
+:END:
+
+In this mode, =`= is automatically converted to =‘=, ='= to =’=, =``= to
+=“=, and =''= to =”=.
+
+Side note: Org mode has a similar feature called "smart quote" (see
+variable =org-export-with-smart-quotes=), which automatically converts
+double quotes in the form ="..."= to =“...”=.  However, single quotes
+are only converted when they are *nested inside double quotes*, e.g.
+#+begin_quote
+This say that: "single quote 'would only look normally' when nested
+inside a double quote."
+#+end_quote
+See [[https://lists.gnu.org/archive/html/emacs-orgmode/2015-10/msg00174.html][the mail list]] for more information about nested single quotes.
