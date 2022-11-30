@@ -2,7 +2,7 @@
 #+date: <2022-11-26 Sat 14:36>
 #+author: thebesttv
 
-[[info:emacs#Moving Point]]
+[[info:emacs#Minibuffer]]
 
 * Input
 
@@ -53,6 +53,38 @@ Four variables control how EOL format is displayed in mode line:
 Each *window* has its own point.  Even if multiple windows are
 displaying the same buffer, each one can have a different value of
 point.
+
+** Navigation
+
+- forward & backward
+  - =C-f=, =C-b= moves forward/backward one *character*
+  - =M-f=, =M-b= moves forward/backward one *word*
+  - =M-a=, =M-e= moves forward/backward one *sentence*
+- up & down
+  - =C-n=, =C-p= moves up/down one line
+- beginning & the end
+  - =C-a=, =C-e= moves to the beginning/end of the current line
+  - =M-<=, =M->= ... of the current buffer
+- =M-r= (=move-to-window-line-top-bottom=) moves point to the
+  center-most line of the window (or to the top/bottom-most line, on
+  subsequent consecutive invocations).
+
+  A numeric argument says which *screen line* to place point on,
+  counting downward from the top of the window (zero means the top
+  line).  A negative argument counts lines up from the bottom (−1 means
+  the bottom line).
+
+  This command is like =C-l=, but instead of scrolling the window to
+  position the current line at center/top/bottom, it *moves point* to
+  the center/top/bottom of the current window.  To summarize, =C-l=
+  moves the window while =M-r= moves the point.
+
+* Killing text
+
+- =C-d= deletes forward one character
+- =M-d= deletes forward one word
+- =<BACKSPACE>= deletes backward one character
+- =M-<BACKSPACE>= deletes backward one word
 
 * Input
 
@@ -107,6 +139,14 @@ Another way to input quotations is to use [[#electric-quote-mode][electric quote
 
 split lines automatically when they get too long
 
+** Visual line mode
+
+enables “word wrapping”: instead of wrapping long lines exactly at the
+right window edge, Emacs wraps them *at the word boundaries*.
+
+Commands such as =C-a=, =C-n=, =C-k= are also redefined so they operate
+on screen lines rather than logical lines.
+
 ** Electric quote mode
 :PROPERTIES:
 :CUSTOM_ID: electric-quote-mode
@@ -124,3 +164,20 @@ This say that: "single quote 'would only look normally' when nested
 inside a double quote."
 #+end_quote
 See [[https://lists.gnu.org/archive/html/emacs-orgmode/2015-10/msg00174.html][the mail list]] for more information about nested single quotes.
+
+** Repeat mode
+
+#+begin_quote
+Also you can activate ‘repeat-mode’ that temporarily enables a transient
+mode with short keys after a limited number of commands.  Currently
+supported shorter key sequences are ‘C-x u u’ instead of ‘C-x u C-x u’
+to undo many changes, ‘C-x o o’ instead of ‘C-x o C-x o’ to switch
+several windows, ‘C-x { { } } ^ ^ v v’ to resize the selected window
+interactively, ‘M-g n n p p’ to navigate ‘next-error’ matches, and ‘C-x
+] ] [ [’ to navigate through pages.  Any other key exits transient mode
+and then is executed normally.  The user option ‘repeat-exit-key’
+defines an additional key to exit this transient mode.  Also it’s
+possible to break the repetition chain automatically after some idle
+time by customizing the user option ‘repeat-exit-timeout’ to specify the
+idle time in seconds after which this transient mode will be turned off.
+#+end_quote
