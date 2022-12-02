@@ -308,6 +308,8 @@
   have to kill yourself to be good at something.
   #+end_quote
 - [[https://mp.weixin.qq.com/s/i7xeJArw5GN-cgZo3lIAHA][每天戴耳机超过一小时，多久会聋？]] 555要少戴耳机了
+- [[https://pubmed.ncbi.nlm.nih.gov/1600586/][Impact of height and weight on life span]]
+  仿佛越矮越瘦越长寿 (要减肥了555
 
 ** 关于编码 --- UTF-8 遍地开花
 
