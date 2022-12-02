@@ -261,6 +261,11 @@
   [[./index/Brad-Wilson-RainbowLorikeet2.jpg]]​
 - [[https://news.cctv.com/2022/07/26/ARTI8BSaRrZN0hW2SN7BnNjs220726.shtml][年轻一代助浴师“出师” 为老人守住尊严]]
   面对人口老龄化, 希望老人护理相关的职业更多一些
+- [[https://velvetshark.com/articles/why-do-brands-change-their-logos-and-look-like-everyone-else][Why do so many brands change their logos and look like everyone else?]]
+  Sans serif invasion
+  #+begin_quote
+  Shoot for simplicity and legibility, but keep your distinguishing features.
+  #+end_quote
 
 ** 关于死亡 --- 让世界知道我来过
 
