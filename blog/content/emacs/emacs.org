@@ -2,7 +2,7 @@
 #+date: <2022-11-26 Sat 14:36>
 #+author: thebesttv
 
-[[info:emacs#Minibuffer]]
+[[info:emacs#Repetition]]
 
 * Input
 
@@ -42,6 +42,62 @@ Four variables control how EOL format is displayed in mode line:
 - =eol-mnemonic-mac=: MAC-like format (CR), initially "(Mac)"
 - =eol-mnemonic-undecided=: displayed when end-of-line format is not yet
   determined, initially ":"
+
+* Minibuffer
+
+To insert a newline in minibuffer, use either =C-o= (=open-line=) or
+=C-q C-j= (which inserts a literal =C-j= character, aka. line feed, LF).
+
+** Completion
+
+Inside a minibuffer, =<TAB>=, =?=, and =<SPC>= are often bound to
+“completion commands”.
+- =<TAB>= tries its best to complete, and display possible completions on failure.
+- =?= only displays possible candidate.
+- =<SPC>= only completes one word at a time, and will not work when the
+  argument often contains spaces, e.g. when entering a file name.
+
+When faced with long lists of possible completions, use =C-M-v=
+(=scroll-other-window=) to scroll down that window.  =M-<PageUp>= and
+=M-<PageDown>= will also work.
+
+Also, typing =M-v= (=switch-to-completions=) inside a minibuffer
+displays and *selects* the window showing the completion list.  That is,
+unlike =C-M-v= which scrolls some other window, =M-v= will (1) display
+the completion window if it does not already exist, and (2) select that
+window.  In that window (in =completion-list-mode=):
+- =n= (=next-completion=) and =p= (=previous-completion=) moves forward
+  and backward
+- =<RET>= selects the completion at point
+- =q= (=quit-window=) quits the window and returns to the minibuffer
+  (this does not kill the buffer)
+- =z= (=kill-current-buffer=) kills the buffer and deletes the window
+  (this does not return to minibuffer)
+
+** History
+
+Emacs keeps separate history lists for several different kinds of
+arguments.  For example, there is a list for file names, used by all the
+commands that read file names.  Other history lists include buffer
+names, command names (used by =M-x=), and command arguments (used by
+commands like =query-replace=).
+
+*** Incremental search through history
+
+#+begin_quote
+If an incremental search fails in the minibuffer, it tries searching the
+minibuffer history.  You can visualize the minibuffer and its history as
+a series of pages, with the earliest history element on the first page
+and the current minibuffer on the last page.  A forward search, =C-s=,
+searches forward to later pages; a reverse search, =C-r=, searches
+backwards to earlier pages.  Like in ordinary buffer search, a failing
+search can wrap around, going from the last page to the first page or
+vice versa.
+---[[info:emacs#Isearch Minibuffer][15.1.7 Searching the Minibuffer]]
+#+end_quote
+
+In short, =C-r= searches backwards in time, finding the most recent
+match.
 
 * Character
 
