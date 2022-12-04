@@ -263,6 +263,56 @@ Entries:
              (format "\n#+attr_latex: :width %s" $4)))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Info manual
+;;;
+;;; The original functions link to a mono info page (a single HTML page
+;;; containing all the nodes).  Two functions are modified here so they
+;;; link to a smaller HTML page (one page per node).
+;;;
+;;; Link to the Top page of a manual, e.g. the Org manual:
+;;;   https://www.gnu.org/software/emacs/manual/html_node/org/
+;;; Link to a node in the manual, e.g. the User-Input node of the Emacs manual:
+;;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/User-Input.html
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'ol-info)
+
+(defun org-info-map-html-url (filename)
+  "Return URL or HTML file associated to Info FILENAME.
+If FILENAME refers to an official GNU document, return a URL pointing to
+the official page for that document, e.g., use \"gnu.org\" for all Emacs
+related documents.  Otherwise, append \".html\" extension to FILENAME.
+See `org-info-emacs-documents' and `org-info-other-documents' for details."
+  (cond ((member filename org-info-emacs-documents)
+	 (format "https://www.gnu.org/software/emacs/manual/html_node/%s"
+		 filename))
+	((cdr (assoc filename org-info-other-documents)))
+	(t (concat filename ".html"))))
+
+(defun org-info-export (path desc format)
+  "Export an info link.
+See `org-link-parameters' for details about PATH, DESC and FORMAT."
+  (let* ((parts (split-string path "#\\|::"))
+	 (manual (car parts))
+	 (node (or (nth 1 parts) "Top")))
+    (pcase format
+      (`html
+       (let ((url (org-info-map-html-url manual))
+             (node-name (org-info--expand-node-name node)))
+         (format "<a href=\"%s/%s\">%s</a>"
+	         url
+                 (if (string= node-name "Top")
+                     ;; the top page, add nothing
+                     ""
+                   ;; a specific node, add node-name.html
+                   (concat node-name ".html"))
+	         (or desc path))))
+      (`texinfo
+       (let ((title (or desc "")))
+	 (format "@ref{%s,%s,,%s,}" node title manual)))
+      (_ nil))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; publishing
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
