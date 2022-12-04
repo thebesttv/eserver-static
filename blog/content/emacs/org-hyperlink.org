@@ -2,6 +2,17 @@
 #+date: <2022-09-22 Thu 20:15>
 #+author: thebesttv
 
+* URLs
+
+** Info
+
+Use the =info= link type to link to an Info manual or a specific node. \\
+Link format: =info:manual-name#optional node name=.
+- To link to the Org manual: \\
+  =see [[info:org][the Org manual]]= \to see [[info:org][the Org manual]];
+- To link to the "User Input" node of the Emacs manual: \\
+  =see [[info:emacs#User Input][Kinds of User Input]]= \to see [[info:emacs#User Input][Kinds of User Input]].
+
 * Headings
 :PROPERTIES:
 :CUSTOM_ID: hlinks
