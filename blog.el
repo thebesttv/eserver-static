@@ -144,8 +144,11 @@ Entries:
               (list
                (ess-html-table-row
                 (list (cons "org-right" "Raw")
-                      (cons "org-left" (format ess-raw-url
-                                               input-file input-file))))))))))
+                      (cons "org-left"
+                            (format ess-raw-url
+                                    input-file
+                                    (file-name-nondirectory input-file))))))
+              )))))
 
 (defun ess-html-preamble (info)
   (let* ((pair (ess-input-file-level info))
