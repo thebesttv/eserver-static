@@ -26,7 +26,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq ess-raw-url
-      "<a href=\"https://github.com/thebesttv/thebesttv.github.io/blob/main/%s\">%s</a>")
+      "<a href=\"https://raw.githubusercontent.com/thebesttv/thebesttv.github.io/main/%s\">%s</a>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Fix org-mode Chinese spacing
