@@ -316,6 +316,27 @@ See `org-link-parameters' for details about PATH, DESC and FORMAT."
       (_ nil))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Sitemap
+;;;
+;;; Sort sitemap using file system's modification date.
+;;; `org-publish-find-date' is used to retrieve the date of a file.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun org-publish-find-date (file project)
+  "Find the date of FILE in PROJECT.
+This function assumes FILE is either a directory or an Org file.
+Return the file system's modification time in `current-time'
+format."
+  (let ((file (org-publish--expand-file-name file project)))
+    (if (file-directory-p file)
+        ;; for directory
+	(file-attribute-modification-time (file-attributes file))
+      ;; for org file
+      (cond ((file-exists-p file)
+	     (file-attribute-modification-time (file-attributes file)))
+	    (t (error "No such file: \"%s\"" file))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; publishing
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
