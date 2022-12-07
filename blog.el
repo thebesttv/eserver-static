@@ -364,6 +364,15 @@ format."
        "</div>\n"
        "#+end_export\n"))
 
+(defun ess-sitemap-function (title list)
+  (require 'ox-org)            ; needed for org backend
+  ;; do not add title, only export the list
+  (concat
+   ess-exclude-sitemap-begin
+   ;; preserve '@@html:...@@' exports using the raw parameter
+   (org-list-to-generic list '(:backend org :raw t))
+   ess-exclude-sitemap-end))
+
 (defun ess-sitemap-format-entry (entry style project)
   "Format for each site map ENTRY, as a string.
 For list style, add timestamp and dir name.  Otherwise, use the
@@ -456,14 +465,7 @@ default implementation."
          ;; modified posts always appear on top
          :sitemap-style list
          ;; function to generate the sitemap Org file
-         :sitemap-function (lambda (title list)
-                             (require 'ox-org) ; needed for org backend
-                             ;; do not add title, only export the list
-                             (concat
-                              ess-exclude-sitemap-begin
-                              ;; preserve '@@html:...@@' exports using the raw parameter
-                              (org-list-to-generic list '(:backend org :raw t))
-                              ess-exclude-sitemap-end))
+         :sitemap-function ess-sitemap-function
          ;; sort files from newest to oldest
          :sitemap-sort-files anti-chronologically
          ;; format each sitemap entry
