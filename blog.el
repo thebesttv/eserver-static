@@ -348,6 +348,7 @@ format."
 ;;; Use smart quotes on export
 (setq org-export-with-smart-quotes t)
 
+;;; Exclude sitemap from pagefind
 (setq ess-exclude-sitemap-begin
       (concat
        "# exclude sitemap from pagefind processing by wrapping it around a div\n"
