@@ -354,7 +354,7 @@ format."
        "# exclude sitemap from pagefind processing by wrapping it around a div\n"
        "# block tagged with \"data-pagefind-ignore\"\n"
        "#+begin_export html\n"
-       "<div data-pagefind-ignore=\"all\">\n"
+       "<div data-pagefind-ignore=\"all\" class=\"sitemap-list\">\n"
        "#+end_export\n"))
 
 (setq ess-exclude-sitemap-end
@@ -363,6 +363,45 @@ format."
        "#+begin_export html\n"
        "</div>\n"
        "#+end_export\n"))
+
+(defun ess-sitemap-format-entry (entry style project)
+  "Format for each site map ENTRY, as a string.
+For list style, add timestamp and dir name.  Otherwise, use the
+default implementation."
+  (if (eq style 'list)
+      (let ((title (org-publish-find-title entry project))
+            ;; Inner dir name, usually in the form of "content/xxx/".
+            ;; Will be nil when entry has no dir name.
+            (dir-name (string-remove-prefix
+                       "content/" (string-remove-suffix
+                                   "/" (file-name-directory entry))))
+            (date (org-publish-find-date entry project)))
+        (s-replace
+         ;; Merge consecutive inline HTML exports into one.  The
+         ;; consecutive exports are in the form of:
+         ;;   '@@html:...@@·@@html:...@@'
+         ;; The '·' in between the two exports is only for visual
+         ;; separation.  After merging, the '@@·@@html:' in the middle
+         ;; is removed.
+         "@@@@html:" ""
+         (concat
+          "@@html:<span>@@"
+          ;; link to post
+          (format "[[file:%s][%s]]" entry title)
+          ;; directory name, grayed out
+          (when (and (stringp dir-name)
+                     (not (string-empty-p dir-name)))
+            (concat
+             "@@html:<span style=\"color:gray\">@@"
+             " (" dir-name ")" ; use space to separate link and dir name
+             "@@html:</span>@@"))
+          "@@html:</span>@@"
+
+          ;; modification time, right aligned
+          "@@html:<span>@@"
+          (format-time-string "%Y-%m-%d %H:%M" date)
+          "@@html:</span>@@")))
+    (org-publish-sitemap-default-entry entry style project)))
 
 (setq org-publish-project-alist
       `(("ess-notes"
@@ -413,25 +452,22 @@ format."
          ;;   #+include: .sitemap.org
          :auto-sitemap t
          :sitemap-filename ".sitemap.org"
+         ;; export sitemap as a list instead of a tree, so that newly
+         ;; modified posts always appear on top
+         :sitemap-style list
+         ;; function to generate the sitemap Org file
          :sitemap-function (lambda (title list)
+                             (require 'ox-org) ; needed for org backend
                              ;; do not add title, only export the list
                              (concat
                               ess-exclude-sitemap-begin
-                              (org-list-to-org list)
+                              ;; preserve '@@html:...@@' exports using the raw parameter
+                              (org-list-to-generic list '(:backend org :raw t))
                               ess-exclude-sitemap-end))
          ;; sort files from newest to oldest
          :sitemap-sort-files anti-chronologically
-         ;; add timestamp
-         ;; :sitemap-format-entry
-         ;; (lambda (entry style project)
-         ;;   (let ((filename (org-publish-find-title entry project)))
-         ;;     (if (= (length filename) 0)
-         ;;         (format "*%s*" entry)
-         ;;       (format "<%s> [[file:%s][%s]]"
-         ;;               (format-time-string "%Y-%m-%d"
-         ;;                                   (org-publish-find-date entry project))
-         ;;               entry
-         ;;               filename))))
+         ;; format each sitemap entry
+         :sitemap-format-entry ess-sitemap-format-entry
          )
 
         ("ess-files"
