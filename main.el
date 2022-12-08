@@ -65,10 +65,14 @@
         (setq ess-target-dir
               (file-name-as-directory
                (string-remove-prefix "--target=" argi))))
+       ;; preserve other options
        (t
         (if (string-prefix-p "--load=" argi)
+            ;; load
             (message "Load: %s" (string-remove-prefix "--load=" argi))
+          ;; unknown
           (message "Preserving unknown option: %s" argi))
+        ;; push back so as to preserve
         (push argi result)))))
   (setq argv (reverse result)))
 
