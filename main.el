@@ -66,7 +66,9 @@
               (file-name-as-directory
                (string-remove-prefix "--target=" argi))))
        (t
-        (message "Preserving unknown option: %s" argi)
+        (if (string-prefix-p "--load=" argi)
+            (message "Load: %s" (string-remove-prefix "--load=" argi))
+          (message "Preserving unknown option: %s" argi))
         (push argi result)))))
   (setq argv (reverse result)))
 
