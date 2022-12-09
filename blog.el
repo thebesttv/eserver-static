@@ -381,9 +381,9 @@ default implementation."
       (let ((title (org-publish-find-title entry project))
             ;; Inner dir name, usually in the form of "content/xxx/".
             ;; Will be nil when entry has no dir name.
-            (dir-name (string-remove-prefix
-                       "content/" (string-remove-suffix
-                                   "/" (file-name-directory entry))))
+            (dir-name (string-remove-suffix
+                       "/" (string-remove-prefix
+                            "content/" (file-name-directory entry))))
             (date (org-publish-find-date entry project)))
         (s-replace
          ;; Merge consecutive inline HTML exports into one.  The
