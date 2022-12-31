@@ -524,6 +524,13 @@ File, with an overall focus on system interface design.
   #+begin_quote
   时代里的一粒沙也有它的重量, 历史中的无名之辈也有他的史诗.
   #+end_quote
+- [[https://www.bilibili.com/video/BV1b84y1W7fb][无私发明家对战邪恶资本家，谁将赢下这场天才对决？]]
+  #+begin_quote
+  So it is true, Tesla is not dead!  He is very much alive among us.
+  Among us is a triumph of his life, his achievement which we celebrate
+  here.
+  ---​[[https://drnikolatesla.tumblr.com/post/136818680763/a-tribute-to-dr-nikola-tesla-on-last-thursday][A Tribute To Dr. Nikola Tesla]]
+  #+end_quote
 
 ** 纪录片
 
