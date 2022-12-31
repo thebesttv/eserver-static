@@ -492,8 +492,6 @@ File, with an overall focus on system interface design.
 - [[https://www.bilibili.com/video/BV1p14y1h7uL][充电宝宇宙，漫威看了都说牛【值不值得买第571期】]] 为醋包饺子的典范,
   把充电宝当成五号电池用, 就是性价比太低了
 - [[https://www.bilibili.com/video/BV1VD4y1t7Qu][两亿老年人，困在厕所里]] 适老化改造任重而道远 👴👵
-- [[https://www.bilibili.com/video/BV1He4y1B73N][看到这3000个落选国旗，才知道我们的国旗有多强！！！【全网首个国旗解读】]]
-  五星红旗确实好看 🇨🇳
 - [[https://www.bilibili.com/video/BV1N84y1t7Yk][40年前我国仿制的世界上最便宜的电脑里有什么秘密？翻修PZ-80背后的故事！]]
   质量非常高的计算机考古视频
 - [[https://www.bilibili.com/video/BV1Yd4y1v7Ef][国产存储芯片逆袭世界巨头，这家公司是啥来头？ --- 差评君]]
@@ -534,6 +532,8 @@ File, with an overall focus on system interface design.
 
 ** 小透明明TM
 
+- [[https://www.bilibili.com/video/BV1He4y1B73N][看到这3000个落选国旗，才知道我们的国旗有多强！！！【全网首个国旗解读】]]
+  五星红旗确实好看 🇨🇳
 - [[https://www.bilibili.com/video/BV1484y1W762][成为百大后，焦虑迷茫的一年！！]] 又甜又腻害的知识区up
 
 ** 纪录片
