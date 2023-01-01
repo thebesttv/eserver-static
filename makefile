@@ -27,9 +27,13 @@ publish: target-dir
 # remove sitemap
 	rm ${TARGET}/.sitemap.{org,html}
 
-# this should be run after publish
+# This should be run after publish.  Originally npx is used to download
+# pagefind, but the command fails very often.  Now, download pagefind
+# binary from GitHub releases every time GitHub Action runs.
+PAGEFIND_URL = https://github.com/CloudCannon/pagefind/releases/download/v0.10.6/pagefind-v0.10.6-x86_64-unknown-linux-musl.tar.gz
 pagefind: target-dir
-	npx -y pagefind --source ${TARGET}
+	wget -qO- '${PAGEFIND_URL}' | tar xvz
+	./pagefind --source ${TARGET}
 
 verify: target-dir
 	find ${TARGET} -name '*.html' | xargs python3 ${VERIFY}

@@ -53,20 +53,8 @@ jobs:
         run: |
           ls -alhF
 
-      - name: Setup Node environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Generate pagefind (with retry)
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 2
-          max_attempts: 3
-          retry_on: any
-          command: make pagefind
-          on_retry_command: |
-            # cleanup before retry
-            rm -rf target/_pagefind
+      - name: Generate pagefind
+        run: make pagefind
 
       - name: Verify target
         run: |
