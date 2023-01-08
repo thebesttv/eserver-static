@@ -496,6 +496,7 @@ File, with an overall focus on system interface design.
   质量非常高的计算机考古视频
 - [[https://www.bilibili.com/video/BV1Yd4y1v7Ef][国产存储芯片逆袭世界巨头，这家公司是啥来头？ --- 差评君]]
   致钛 yyds~
+- [[https://www.youtube.com/watch?v=ui2skAmcclM][网易新闻2022年度盘点]] 致敬每一个扛住了生活的平凡人
 
 ** Veritasium 真理元素
 
