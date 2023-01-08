@@ -498,6 +498,11 @@ File, with an overall focus on system interface design.
   致钛 yyds~
 - [[https://www.youtube.com/watch?v=ui2skAmcclM][网易新闻2022年度盘点]] 致敬每一个扛住了生活的平凡人
 
+** 搞笑类
+
+- [[https://www.bilibili.com/video/BV1Lv4y1u7jR][我 可 太 喜 欢 期 末 周 了！]] 乱七八糟, 滂滂臭臭~
+- [[https://space.bilibili.com/1937416537][陈一枝你坐下]] hhhh
+
 ** Veritasium 真理元素
 
 - [[https://youtu.be/IgF3OX8nT0w][The Most Powerful Computers You've Never Heard Of]]
