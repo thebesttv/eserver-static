@@ -4,6 +4,7 @@
 
 - [[https://csrankings.org/][CSRankings: Computer Science Rankings]]
 - [[https://www.ccf.org.cn/Academic_Evaluation/By_category/][CCF推荐国际学术会议和期刊目录]]
+- [[https://github.com/lovefc/china_school_badge][全国高校校徽字体图标库]]
 
 * 笔记
 
