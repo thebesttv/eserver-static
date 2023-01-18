@@ -6,6 +6,8 @@
 
 这里是之前记录RISC-V各种资源的笔记.
 
+- [[https://ysyx.oscc.cc/][一生一芯计划 - 从零开始创造属于你的RISC-V处理器]]
+
 * Roadmap
 
 曾经的总目标: 从零开始用Verilog实现一个可以运行Linux的CPU
