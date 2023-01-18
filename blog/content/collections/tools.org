@@ -1,5 +1,10 @@
 #+title: 有用的工具
 
+* 大学相关
+
+- [[https://csrankings.org/][CSRankings: Computer Science Rankings]]
+- [[https://www.ccf.org.cn/Academic_Evaluation/By_category/][CCF推荐国际学术会议和期刊目录]]
+
 * 笔记
 
 - [[https://github.com/xournalpp/xournalpp/][Xournal++]] 支持数位板的开源笔记软件
