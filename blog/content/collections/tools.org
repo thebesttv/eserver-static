@@ -25,6 +25,6 @@
 
 * Bilibili
 
-- [[https://github.com/nICEnnnnnnnLee/BilibiliDown][BilibiliDown]] 视频下载
+- [[https://github.com/nICEnnnnnnnLee/BilibiliDown][BilibiliDown]] GUI视频下载
 - [[https://github.com/nilaoda/BBDown][BBDown]] 使用C#编写, 跨平台, 命令行视频下载
 - [[https://github.com/BililiveRecorder/BililiveRecorder][B站录播姬]] 直播录制
