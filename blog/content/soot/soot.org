@@ -45,7 +45,7 @@ Jimple 尖括号中为 method signature: =class-name: return-type method-name
 :CUSTOM_ID: analyzed-classes
 :END:
 
-There're [[https://soot-oss.github.io/soot/docs/4.4.0-SNAPSHOT/options/soot_options.html#description][three kinds of classes]] (these are classes *analyzed by Soot*,
+There are [[https://soot-oss.github.io/soot/docs/4.4.0-SNAPSHOT/options/soot_options.html#description][three kinds of classes]] (these are classes *analyzed by Soot*,
 not the ones [[#main-impl-classes][owned by Soot]]):
 - argument class: specified explicitly in Soot cli as argument, also
   become application class
@@ -55,7 +55,7 @@ not the ones [[#main-impl-classes][owned by Soot]]):
   indirectly, by the application classes, but which are not themselves
   application classes.  Only used for *type resolution*.
 Since argument classes automatically become application classes,
-there're inherently only two classes---application class & library
+there are inherently only two classes---application class & library
 class.
 
 When you use the =-app= option, however, then Soot also processes all
@@ -347,7 +347,7 @@ There are 15 =Stmt=​s (=Stmt= is instance of =Unit=)
     removed by Jimple's JSR inliner.
 
 #+begin_quote
-The local variables which start with a =$= sign represent *stack
+The local variables which start with a dollar sign (=$=) represent *stack
 positions* and not local variables in the original program whereas those
 without =$= represent real local variables e.g. =i0= in the main method
 corresponds to =a= in the Java source.
