@@ -49,7 +49,7 @@ jobs:
           >/dev/null make install
 
           # save Emacs libs
-          mkdir /emacs/saved-libs
+          mkdir /emacs/cached-libs
           cp $(ldd /emacs/bin/${{ env.name }} | grep '=> /lib/' | cut -d' ' -f 3) /emacs/cached-libs
       - name: Prepare Emacs
         run: |
