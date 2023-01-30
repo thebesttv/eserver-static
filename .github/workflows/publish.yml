@@ -39,7 +39,7 @@ jobs:
           sudo make install
       - name: Prepare Emacs
         run: |
-          echo 'PATH=$PATH:/emacs/bin' >> ~/.bashrc
+          echo 'export PATH="$PATH:/emacs/bin"' >> ~/.bashrc
           . ~/.bashrc
           emacs --version | head -n1
 
