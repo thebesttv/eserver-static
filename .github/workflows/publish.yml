@@ -12,6 +12,10 @@ jobs:
   Generate-target:
     runs-on: ubuntu-latest
     steps:
+      - name: Prepare Emacs installation directory
+        run: |
+          sudo mkdir /emacs
+          sudo chown $USER: /emacs
       - name: Cache Emacs installation
         id: cache-emacs-installation
         uses: actions/cache@v3
@@ -42,7 +46,7 @@ jobs:
           mkdir build && cd build
           ../configure --prefix=/emacs
           make
-          sudo make install
+          make install
       - name: Prepare Emacs
         run: |
           echo "/emacs/bin" >> $GITHUB_PATH
