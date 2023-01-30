@@ -45,8 +45,8 @@ jobs:
           url: https://raw.githubusercontent.com/MestreLion/git-tools/main/git-restore-mtime
           bin: /bin/git-restore-mtime
         run: |
-          wget -q ${{ env.url }} -o ${{ env.bin }}
-          chmod +x ${{ env.bin }}
+          sudo wget -q ${{ env.url }} -o ${{ env.bin }}
+          sudo chmod +x ${{ env.bin }}
       - name: Restore mtime
         run: |
           git restore-mtime
