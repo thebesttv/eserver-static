@@ -45,8 +45,8 @@ jobs:
           cd ${{ env.name }}
           mkdir build && cd build
           ../configure --prefix=/emacs --with-x-toolkit=no --with-jpeg=no --with-png=no --with-gif=no --with-tiff=no
-          make
-          make install
+          >/dev/null make
+          >/dev/null make install
 
           # save Emacs libs
           mkdir /emacs/saved-libs
