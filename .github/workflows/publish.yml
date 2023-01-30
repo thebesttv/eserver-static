@@ -26,7 +26,6 @@ jobs:
         env:
           name: emacs-28.2
         run: |
-          sudo sed -i "s/^# deb-src/deb-src/" /etc/apt/sources.list
           sudo sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list
           sudo apt-get update
           sudo apt-get -y install build-essential
