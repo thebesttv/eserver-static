@@ -11,6 +11,15 @@ jobs:
   Generate-target:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache Emacs packages
+        id: cache-emacs
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.emacs
+            ~/.emacs.d
+          key: ${{ runner.os }}-emacs
+
       - name: Install Emacs
         run: |
           sudo snap install emacs --classic
