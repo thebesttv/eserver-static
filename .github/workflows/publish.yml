@@ -47,9 +47,13 @@ jobs:
           ../configure --prefix=/emacs --with-x-toolkit=no --with-jpeg=no --with-png=no --with-gif=no --with-tiff=no
           make
           make install
-
-          # save Emacs libs
+      - name: Save Emacs libs
+        if: steps.cache-emacs-installation.outputs.cache-hit != 'true'
+        env:
+          name: emacs-28.2
+        run: |
           mkdir /emacs/cached-libs
+          ldd /emacs/bin/emacs
           cp -v $(ldd /emacs/bin/emacs | grep '=> /lib/' | cut -d' ' -f 3) /emacs/cached-libs
       - name: Prepare Emacs
         run: |
