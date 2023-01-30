@@ -54,7 +54,7 @@ jobs:
       - name: Prepare Emacs
         run: |
           # restore Emacs libs
-          sudo mv /emacs/cached-libs/* /lib/x86_64-linux-gnu/
+          sudo cp /emacs/cached-libs/* /lib/x86_64-linux-gnu/
           echo "/emacs/bin" >> $GITHUB_PATH
       - name: Test Emacs
         run: |
