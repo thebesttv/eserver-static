@@ -12,17 +12,23 @@ jobs:
   Generate-target:
     runs-on: ubuntu-latest
     steps:
-      - name: Cache Emacs
-        id: cache-emacs
+      - name: Cache Emacs installation
+        id: cache-emacs-installation
         uses: actions/cache@v3
         with:
           path: |
             /emacs
+          key: ${{ runner.os }}-emacs-installation
+      - name: Cache Emacs package
+        id: cache-emacs-package
+        uses: actions/cache@v3
+        with:
+          path: |
             ~/.emacs
             ~/.emacs.d
-          key: ${{ runner.os }}-emacs
+          key: ${{ runner.os }}-emacs-package
       - name: Install Emacs
-        if: steps.cache-emacs.outputs.cache-hit != 'true'
+        if: steps.cache-emacs-installation.outputs.cache-hit != 'true'
         env:
           name: emacs-28.2
         run: |
