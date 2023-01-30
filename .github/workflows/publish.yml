@@ -27,10 +27,10 @@ jobs:
           name: emacs-28.2
         run: |
           sudo sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list
-          sudo apt-get update
-          sudo apt-get -y install build-essential
-          sudo apt-get -y build-dep emacs
-          wget https://ftp.gnu.org/gnu/emacs/${{ env.name }}.tar.xz
+          >/dev/null sudo apt-get update
+          >/dev/null sudo apt-get -y install build-essential
+          >/dev/null sudo apt-get -y build-dep emacs
+          wget -q https://ftp.gnu.org/gnu/emacs/${{ env.name }}.tar.xz
           tar xf ${{ env.name }}.tar.xz
           cd ${{ env.name }}
           mkdir build && cd build
