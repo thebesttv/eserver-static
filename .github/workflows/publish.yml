@@ -40,9 +40,15 @@ jobs:
           # timestamp for each file.  This requires a full git history.
           # The default value (1) creates a shallow checkout.
           fetch-depth: 0
+      - name: Prepare git-restore-mtime
+        env:
+          url: https://raw.githubusercontent.com/MestreLion/git-tools/main/git-restore-mtime
+          bin: /bin/git-restore-mtime
+        run: |
+          wget -q ${{ env.url }} -o ${{ env.bin }}
+          chmod +x ${{ env.bin }}
       - name: Restore mtime
         run: |
-          sudo apt -y install git-restore-mtime > /dev/null
           git restore-mtime
           ls -alhF
           ls -alhF blog
