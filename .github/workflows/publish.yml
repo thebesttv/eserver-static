@@ -42,7 +42,7 @@ jobs:
           echo "/emacs/bin" >> $GITHUB_PATH
       - name: Test Emacs
         run: |
-          emacs --version | head -n1
+          emacs --version
 
       - name: Set time-zone to ShangHai
         run: |
