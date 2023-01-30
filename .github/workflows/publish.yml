@@ -50,7 +50,7 @@ jobs:
 
           # save Emacs libs
           mkdir /emacs/cached-libs
-          cp $(ldd /emacs/bin/${{ env.name }} | grep '=> /lib/' | cut -d' ' -f 3) /emacs/cached-libs
+          cp -v $(ldd /emacs/bin/emacs | grep '=> /lib/' | cut -d' ' -f 3) /emacs/cached-libs
       - name: Prepare Emacs
         run: |
           # restore Emacs libs
