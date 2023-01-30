@@ -16,6 +16,9 @@ jobs:
         run: |
           sudo mkdir /emacs
           sudo chown $USER: /emacs
+          sudo sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list
+          >/dev/null sudo apt-get update
+          >/dev/null sudo apt-get -y build-dep emacs
       - name: Cache Emacs installation
         id: cache-emacs-installation
         uses: actions/cache@v3
@@ -36,10 +39,7 @@ jobs:
         env:
           name: emacs-28.2
         run: |
-          sudo sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list
-          >/dev/null sudo apt-get update
           >/dev/null sudo apt-get -y install build-essential
-          >/dev/null sudo apt-get -y build-dep emacs
           wget -q https://ftp.gnu.org/gnu/emacs/${{ env.name }}.tar.xz
           tar xf ${{ env.name }}.tar.xz
           cd ${{ env.name }}
