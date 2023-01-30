@@ -39,8 +39,7 @@ jobs:
           sudo make install
       - name: Prepare Emacs
         run: |
-          echo 'export PATH="$PATH:/emacs/bin"' >> ~/.bashrc
-          . ~/.bashrc
+          echo "/emacs/bin" >> $GITHUB_PATH
           emacs --version | head -n1
 
       - name: Set time-zone to ShangHai
