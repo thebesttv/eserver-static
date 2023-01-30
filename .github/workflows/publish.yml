@@ -12,19 +12,36 @@ jobs:
   Generate-target:
     runs-on: ubuntu-latest
     steps:
-      - name: Cache Emacs packages
+      - name: Cache Emacs
         id: cache-emacs
         uses: actions/cache@v3
         with:
           path: |
+            /emacs
             ~/.emacs
             ~/.emacs.d
           key: ${{ runner.os }}-emacs
-
       - name: Install Emacs
+        if: ${{ steps.cache-emacs.outputs.cache-hit != 'true' }}
+        env:
+          name: emacs-28.2
         run: |
-          sudo snap install emacs --classic
+          sudo apt update
+          sudo apt install build-essential
+          sudo apt build-dep emacs
+          wget https://ftp.gnu.org/gnu/emacs/${{ env.name }}.tar.xz
+          tar xf ${{ env.name }}.tar.xz
+          cd ${{ env.name }}
+          mkdir build && cd build
+          ../configure --prefix=/emacs
+          make
+          sudo make install
+      - name: Prepare Emacs
+        run: |
+          echo 'PATH=$PATH:/emacs/bin' >> ~/.bashrc
+          . ~/.bashrc
           emacs --version | head -n1
+
       - name: Set time-zone to ShangHai
         run: |
           sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
