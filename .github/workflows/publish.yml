@@ -6,11 +6,21 @@ on:
   push:
     branches:
       - '*'                     # run on all branches
+  workflow_dispatch:
 
 jobs:
   Generate-target:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache Emacs packages
+        id: cache-emacs
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.emacs
+            ~/.emacs.d
+          key: ${{ runner.os }}-emacs
+
       - name: Install Emacs
         run: |
           sudo snap install emacs --classic
@@ -30,9 +40,15 @@ jobs:
           # timestamp for each file.  This requires a full git history.
           # The default value (1) creates a shallow checkout.
           fetch-depth: 0
+      - name: Prepare git-restore-mtime
+        env:
+          url: https://raw.githubusercontent.com/MestreLion/git-tools/main/git-restore-mtime
+          bin: /bin/git-restore-mtime
+        run: |
+          sudo wget -q ${{ env.url }} -o ${{ env.bin }}
+          sudo chmod +x ${{ env.bin }}
       - name: Restore mtime
         run: |
-          sudo apt -y install git-restore-mtime > /dev/null
           git restore-mtime
           ls -alhF
           ls -alhF blog
