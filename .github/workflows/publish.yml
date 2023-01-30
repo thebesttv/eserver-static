@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - '*'                     # run on all branches
+  workflow_dispatch:
 
 jobs:
   Generate-target:
