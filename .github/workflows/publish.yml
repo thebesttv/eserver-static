@@ -22,7 +22,7 @@ jobs:
             ~/.emacs.d
           key: ${{ runner.os }}-emacs
       - name: Install Emacs
-        if: ${{ steps.cache-emacs.outputs.cache-hit != 'true' }}
+        if: steps.cache-emacs.outputs.cache-hit != 'true'
         env:
           name: emacs-28.2
         run: |
