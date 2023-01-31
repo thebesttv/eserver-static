@@ -6,6 +6,9 @@ on:
   push:
     branches:
       - '*'                     # run on all branches
+    paths:
+      - '!docker/**'
+      - '!.github/workflows/docker.yml'
   workflow_dispatch:
 
 jobs:
