@@ -79,7 +79,7 @@ jobs:
           cache: 'pip'          # cache pip dependencies
       - name: Install Python packages
         run: |
-          pip install beautifulsoup4
+          pip install -r requirements.txt
       - name: Verify target
         run: |
           make verify
