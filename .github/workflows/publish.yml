@@ -12,6 +12,20 @@ jobs:
   Generate-target:
     runs-on: ubuntu-latest
     steps:
+      - name: Cache snap packages
+        id: cache-snap
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/snap-packages
+          key: snap
+      - name: Download snap packages
+        if: steps.cache-snap.outputs.cache-hit != 'true'
+        run: |
+          mkdir ~/snap-packages
+          cd ~/snap-packages
+          snap download emacs
+
       - name: Cache Emacs packages
         id: cache-emacs
         uses: actions/cache@v3
@@ -23,7 +37,9 @@ jobs:
 
       - name: Install Emacs
         run: |
-          sudo snap install emacs --classic
+          cd ~/snap-packages
+          sudo snap ack emacs_*.assert
+          sudo snap install emacs_*.snap --classic
           emacs --version | head -n1
       - name: Set time-zone to ShangHai
         run: |
