@@ -3,7 +3,7 @@ name: Build & cache Emacs Docker image
 on:
   push:
     paths:
-      - docker/**
+      - 'docker/**'
   workflow_dispatch:
 
 jobs:
