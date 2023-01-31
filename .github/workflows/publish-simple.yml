@@ -1,0 +1,97 @@
+name: Publish to GitHub Pages (simple version)
+
+on:
+  schedule:
+    - cron: '33 18 * * *'       # UTC 18:33 => UTC+8 2:33
+  push:
+    branches:
+      - '*'                     # run on all branches
+  workflow_dispatch:
+
+jobs:
+  Generate-and-publish-target:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Emacs
+        run: |
+          sudo snap install emacs --classic
+          emacs --version | head -n1
+      - name: Set time-zone to ShangHai
+        run: |
+          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          date
+          emacs -Q --batch --eval "(print (current-time-zone))"
+          emacs -Q --batch --eval "(print (current-time-string))"
+
+      - name: Checkout repo (full history)
+        uses: actions/checkout@v3
+        with:
+          # from https://github.com/marketplace/actions/git-restore-mtime
+          # git-restore-mtime uses the ref log to find the correct
+          # timestamp for each file.  This requires a full git history.
+          # The default value (1) creates a shallow checkout.
+          fetch-depth: 0
+      - name: Restore mtime
+        run: |
+          sudo apt-get -y install git-restore-mtime > /dev/null
+          git restore-mtime
+          ls -alhF
+          ls -alhF blog
+
+      - name: Generate Diagram
+        uses: githubocto/repo-visualizer@main
+        with:
+          output_file: "diagram.svg"
+          excluded_paths: ".github,.gitignore"
+          should_push: false           # do not push, instead,
+          artifact_name: 'diagram-svg' # generate an artifact
+
+      - name: Publish
+        run: make publish
+        env:
+          ELPA_SRC: no_mirror
+      - name: List current repo
+        run: |
+          ls -alhF
+
+      - name: Generate pagefind
+        run: make pagefind
+
+      - name: Verify target
+        run: |
+          pip3 install beautifulsoup4 > /dev/null
+          make verify
+
+      - name: Download diagram
+        if: github.ref == 'refs/heads/main' # only publish when we are on main branch
+        uses: actions/download-artifact@v3
+        with:
+          name: diagram-svg
+          path: target
+      - name: Remove background of diagram
+        if: github.ref == 'refs/heads/main' # only publish when we are on main branch
+        run: |
+          sed -i "s/background:white;//" target/diagram.svg
+      - name: Bypass Jekyll processing
+        if: github.ref == 'refs/heads/main' # only publish when we are on main branch
+        # bypass Jekyll processing, so files or directories that start
+        # with underscores are allowed, see
+        # https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
+        run: |
+          touch target/.nojekyll
+
+      - name: List target directory
+        if: github.ref == 'refs/heads/main' # only publish when we are on main branch
+        run: |
+          ls -alhF target/
+      - name: Pushes to GitHub Pages
+        if: github.ref == 'refs/heads/main' # only publish when we are on main branch
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          source-directory: 'target'
+          destination-github-username: 'thebesttv'
+          destination-repository-name: 'thebesttv.github.io'
+          user-email: taojuntian@outlook.com
+          target-branch: main
