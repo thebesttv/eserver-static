@@ -10,7 +10,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Build image
-        runs: |
+        run: |
           cd docker/
           docker build -t emacs --build-arg UNAME=$(whoami) --build-arg UID=$(id -u) --build-arg GID=$(id -g) .
       - name: Setup Debug Session
