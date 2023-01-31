@@ -47,6 +47,8 @@ jobs:
           ../configure --prefix=/emacs --with-x-toolkit=no --with-jpeg=no --with-png=no --with-gif=no --with-tiff=no
           make
           make install
+      - name: Setup Debug Session
+        uses: csexton/debugger-action@master
       - name: Save Emacs libs
         if: steps.cache-emacs-installation.outputs.cache-hit != 'true'
         env:
