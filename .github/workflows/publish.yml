@@ -16,6 +16,8 @@ jobs:
         run: |
           sudo mkdir /emacs
           sudo chown $USER: /emacs
+      - name: Setup Debug Session
+        uses: csexton/debugger-action@master
       - name: Cache Emacs installation
         id: cache-emacs-installation
         uses: actions/cache@v3
@@ -47,8 +49,6 @@ jobs:
           ../configure --prefix=/emacs --with-x-toolkit=no --with-jpeg=no --with-png=no --with-gif=no --with-tiff=no
           make
           make install
-      - name: Setup Debug Session
-        uses: csexton/debugger-action@master
       - name: Save Emacs libs
         if: steps.cache-emacs-installation.outputs.cache-hit != 'true'
         env:
