@@ -1,6 +1,9 @@
 name: Build & cache Emacs Docker image
 
 on:
+  push:
+    paths:
+      - docker/**
   workflow_dispatch:
 
 jobs:
