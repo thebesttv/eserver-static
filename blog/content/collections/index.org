@@ -582,6 +582,9 @@ File, with an overall focus on system interface design.
 - [[https://www.bilibili.com/video/BV1484y1W762][成为百大后，焦虑迷茫的一年！！]] 又甜又腻害的知识区up
 
 ** 沃玛 Warma
+:PROPERTIES:
+:CUSTOM_ID: warma
+:END:
 
 #+begin_quote
 世界奇奇怪怪, 沃玛可可爱爱.
