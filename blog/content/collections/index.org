@@ -724,6 +724,12 @@ File, with an overall focus on system interface design.
 - [[https://secretgeek.github.io/html_wysiwyg/html.html][This page is a truly naked, brutalist html quine.]]
   在网页上展示网页源码
 
+*** 赛博情书
+
+- idealclover 的 [[https://github.com/idealclover/Love-Gift][Love-Gift]], [[https://love.idealclover.top/][效果]] (最喜欢的)
+- hackerzhou 的 [[https://github.com/hackerzhou/Love][Love]], [[https://web.archive.org/web/20150212065840/http://hackerzhou.me/ex_love/][效果]]
+- wongjohn 的 [[https://github.com/wongjohn/for-my-love][for-my-love]], [[https://wongjohn.github.io/for-my-love/][效果]]
+
 * 我想玩的
 
 大概是我想玩的各种游戏, 但因为事情好多好多, 而且只有一个集显笔记本,
