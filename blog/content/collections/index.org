@@ -475,6 +475,11 @@ File, with an overall focus on system interface design.
 - [[https://www.sqlite.org/testing.html][How SQLite Is Tested]]
 - [[https://news.ycombinator.com/item?id=18685748][Hack News 上的一个评论]], 下方 SQLite 的作者解释了 100% MC/DC 的好处
 
+** 关于网络安全
+
+- [[https://github.com/ruanyf/weekly/blob/master/docs/issue-242.md][科技爱好者周刊（第 242 期）：一次尴尬的服务器被黑]]
+  阮一峰的博客被黑了, 看来把我的博客转成静态的放到 GitHub Pages 上是个正确的决定.
+
 ** 关于workflow
 
 - [[https://castel.dev/post/research-workflow/][My Mathematics PhD research workflow]] 一个数学PhD的workflow, 包括LaTeX笔记
