@@ -332,6 +332,8 @@
   [[https://www.bloomberg.com/news/articles/2022-03-14/how-to-improve-sleep-avoid-dimly-lit-rooms-studay-finds][Sleep in Dimly Lit Room Can Be Bad for Your Health, Study Suggests]]
 - [[https://pubmed.ncbi.nlm.nih.gov/1600586/][Impact of height and weight on life span]]
   仿佛越矮越瘦越长寿 (要减肥了555
+- [[https://www.theguardian.com/lifeandstyle/2023/feb/17/humans-may-need-more-sleep-in-winter-study-finds][Humans ‘may need more sleep in winter’, study finds]]
+  冬天需要多睡觉~
 
 ** 关于编码 --- UTF-8 遍地开花
 
