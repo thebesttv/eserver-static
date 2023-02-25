@@ -337,6 +337,10 @@
 
 ** 关于工作
 
+*** 996
+
+- [[https://github.com/996icu/996.ICU][996.ICU]] 工作 996，生病 ICU。
+
 *** 自由职业
 
 - [[https://awesomekling.github.io/How-I-make-a-living-working-on-SerenityOS/][How I make a living working on SerenityOS]]
