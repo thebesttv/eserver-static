@@ -723,6 +723,7 @@ File, with an overall focus on system interface design.
 - [[https://collet66.web.fc2.com/][Syosa's Room]] 画了很多像素花, 鸟, 狗
   {{{image(80)}}}
   [[./index/pixel-birds.png]]
+- [[https://simonwillison.net/][Simon Willison’s Weblog]]
 
 * 有意思的
 
