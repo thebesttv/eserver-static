@@ -794,6 +794,7 @@ File, with an overall focus on system interface design.
 - [[https://deskto.ps/][desktop.ps]] 分享你的桌面😎
 - [[https://10mtweet.netmeister.org/][10 Minute Tweet]] 推后即焚😉
 - [[https://pointerpointer.com/][Pointer Pointer]] 鼠标指到哪, 就会生成一个图片也指向那里👈
+- [[https://neal.fun/wonders-of-street-view/][Wonders of Street View]] Google 街景中的有趣画面
 - [[https://redd.it/uf5htq][One of my better comebacks.]]
   Always check your friendship before terminating it.  hhhh
 - [[https://gitlab.com/hardenedlinux/animula][animula]] 前身是 LambdaChip, 但貌似公司倒闭了, 现在变成开源项目.
