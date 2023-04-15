@@ -711,7 +711,9 @@ File, with an overall focus on system interface design.
 - 万神殿 (Uploaded Intelligence)
 - 猫头鹰魔法社 The Owl House (Lumity!)
   {{{image(80)}}}
-  [[./index/the-owl-house.jpg]]
+  [[./index/the-owl-house.jpg]]​
+  {{{image(80)}}}
+  [[./index/the-owl-house-farewell.jpg]]​
 - [[https://movie.douban.com/subject/26647087/][三体]] 真人版
 - [[https://movie.douban.com/subject/35314632/][黑暗荣耀]], [[https://movie.douban.com/subject/36193784/][黑暗荣耀2]]
 
