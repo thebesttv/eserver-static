@@ -1348,7 +1348,7 @@ First we have =zero= and =add-1=:
   ((repeated square 2) 5)                 ; 625
 #+end_src
 
-=one= and =two= becomeq quite easy now that we know what Church numbers
+=one= and =two= become quite easy now that we know what Church numbers
 do:
 #+begin_src scheme
   (define one
@@ -1402,7 +1402,8 @@ Here's a more concise implementation of =add=:
   (define (add a b)
     ((a add-1) b))
 #+end_src
-Here =(a add-1)= essentially transforms =add-1= to =add-a=.
+Here =(a add-1)= essentially transforms =add-1= to =add-a=, a function
+that adds =a= to a Church number.
 
 ** Ex 2.20 --- dotted-tail notation
 #+begin_quote
