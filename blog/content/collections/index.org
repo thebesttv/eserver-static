@@ -628,6 +628,8 @@ File, with an overall focus on system interface design.
 - 老猫的《防臭小子计划》系列
   - [[https://www.bilibili.com/video/BV1YL411r7SB][第一课:教女儿装系统！]]
   - [[https://www.bilibili.com/video/BV1uT411s7Y9][第二课:网络问题不求人！]]
+- [[https://www.youtube.com/watch?v=1UTjWy-vnOo][I Gave the MIT Commencement Speech for 2023]]
+  Mark Rober 对 MIT 2023 届毕业生的讲话
 
 ** 搞笑类
 
