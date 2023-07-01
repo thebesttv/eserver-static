@@ -699,7 +699,7 @@ File, with an overall focus on system interface design.
 {{{image(40)}}}
 [[./index/warma.jpg]]
 
-- 爆炸电台系列
+- [[https://space.bilibili.com/53456/channel/collectiondetail?sid=149941][《爆炸电台》系列]]
 - [[https://www.bilibili.com/video/BV1ut411P7Sz][我家里有蜘蛛！！！]] 啊↑啊↗啊→啊↘
 - [[https://www.bilibili.com/video/BV1My4y1q7Q3][看我一顿乱敲]] 傻鼓
 
