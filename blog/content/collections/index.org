@@ -572,6 +572,8 @@ File, with an overall focus on system interface design.
   Button prompts are no small feat.
   Inconsistent (or plain wrong) button prompts (i.e. press *which*
   button to do *what*) can be very confusing.
+- [[https://youtu.be/jlKNOirh66E][Moebius-style 3D Rendering | Useless Game Dev]]
+  使用 Sobel 滤波和特殊的纹理，让画面有 Moebius 作品的风格
 
 * 棒棒视频
 
