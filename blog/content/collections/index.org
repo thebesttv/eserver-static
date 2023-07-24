@@ -791,6 +791,7 @@ File, with an overall focus on system interface design.
 - [[https://movie.douban.com/subject/6893932/][壮志凌云2：独行侠]] (爽片 top gun)
 - [[https://movie.douban.com/subject/35134230/][有史以来最棒的啤酒运送]] ("真相不会伤害我们，谎言才会")
 - [[https://movie.douban.com/subject/35267208/][流浪地球2]]
+- [[https://movie.douban.com/subject/26258779/][银河护卫队3]]
 
 * 快乐游戏
 
