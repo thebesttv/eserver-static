@@ -125,7 +125,7 @@ Linux 下，试图 Authorize Device 时，如果 HID 列表中显示了自己的
 但点击 Connect 后没有反应；再次尝试 Authorize Device，
 发现列表中显示已配对，但点击还是没反应，这可能是权限问题。
 
-判断方法：浏览器访问 [[chrome://device-log/]]，查找类似 =HID "failed to open
+判断方法：浏览器访问 =chrome://device-log/=​，查找类似 =HID "failed to open
 /dev/hidraw2"= 的消息，有的话就因该是权限问题了。可以参考[[https://github.com/the-via/app/issues/91#issuecomment-1505095474][这里]]。
 
 解决方法：[[https://wiki.archlinux.org/title/Keyboard_input#Configuration_of_VIA_compatible_keyboards][修改 udev 规则]]。
