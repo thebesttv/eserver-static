@@ -11,19 +11,12 @@
   qmk console --bootloaders
 #+end_src
 
-使用合宙的 Air32F103 代替 STM32F103，目前选用 Air32F103CBT6，开发板9.9一个。
-基于 Air32F103 的几块 QMK 键盘：
-- [[https://oshwhub.com/ythfjjh/zq50][50%矮轴热插拔键盘]]
-- [[https://oshwhub.com/small_da/3jian-xiao-jian-pan-kuai-su-shan][3键小键盘-快速上手版ZY-03S]]
-- [[https://oshwhub.com/small_da/3jian-xiao-jian-pan-xuan-niu][3键小键盘-旋钮显示屏版ZY-03]]
-用的都是 [[https://github.com/zhaqian12/qmk_firmware/tree/zhaqian][zhaqian]] 的固件和uf2bootloader。
-
 * 使用 QMK 从零开始设计一个键盘的流程
 
 1. 设计 layout：使用 [[http://www.keyboard-layout-editor.com/][KLE]] 设计。可以在键位上直接写上矩阵座标，方便之后VIA的配置。
 2. 生成PCB和定位板边框：使用 [[http://builder.swillkb.com/][Plate & Case Builder]]，直接把 KLE 的 raw
    data 复制过去。
-   TODO：Switch Type 一般选 =t:1=​，Stabilizer Type 一般 =s:2=​？
+   Switch Type 一般选 =t:1=​，Stabilizer Type 一般 =s:2=​。
 3. 在 QMK 中添加新的键盘。
    其中 =info.json= 的 layout 的生成有两种方法：
    1. 使用 [[https://qmk.fm/converter/][Convert KLE raw to QMK info.json]] 直接把 KLE 的 raw data 转换
@@ -32,11 +25,22 @@
       需要用 [[https://noroadsleft.github.io/kbf_qmk_converter/][KBFirmware JSON to QMK Parser]] 再次转换。
 4. 设计 keymap
 
-* 烧录QMK
+* 合宙Air32F103
+
+UPD: 现在有了9.9的树莓派Pico，这个就没啥必要了。
+
+使用合宙的 Air32F103 代替 STM32F103，目前选用 Air32F103CBT6，开发板9.9一个。
+基于 Air32F103 的几块 QMK 键盘：
+- [[https://oshwhub.com/ythfjjh/zq50][50%矮轴热插拔键盘]]
+- [[https://oshwhub.com/small_da/3jian-xiao-jian-pan-kuai-su-shan][3键小键盘-快速上手版ZY-03S]]
+- [[https://oshwhub.com/small_da/3jian-xiao-jian-pan-xuan-niu][3键小键盘-旋钮显示屏版ZY-03]]
+用的都是 [[https://github.com/zhaqian12/qmk_firmware/tree/zhaqian][zhaqian]] 的固件和uf2bootloader。
+
+** 烧录QMK
 
 - [[https://www.bilibili.com/read/cv23216690/][使用国产芯片构建QMK固件（一）]]
 
-** 使用 STM32duino BL
+*** 使用 STM32duino BL
 
 - [[https://docs.qmk.fm/#/flashing?id=stm32duino][Flashing Instructions and Bootloader Information]]
   提供了刷写方法。
@@ -46,7 +50,7 @@ erase flash 再刷入链接中的 BL，然后使用命令
   dfu-util -a 2 -d 1EAF:0003 -D <filename>
 #+end_src
 
-** 使用 UF2 BL
+*** 使用 UF2 BL
 
 - [[https://learn.adafruit.com/adafruit-hallowing/uf2-bootloader-details][UF2 Bootloader Details]]
 
@@ -118,6 +122,11 @@ VIA的键盘配置文件在 [[https://github.com/the-via/keyboards][the-via/keyb
 
 配置文件完成后，可以打开 [[https://usevia.app/][VIA App]]，在 Settings 中，选择 Show Design Tab，
 然后去 Design Tab，把配置文件上传，这样就可以正常连接键盘了。
+
+** VIA网页端使用
+
+如果需要添加一些复杂的 keycode，如 =MT(MOD_LCTL,KC_F)=​，
+选择 Special 下的 Any，然后手动输入 keycode。
 
 ** Linux 下可能遇到的问题
 
