@@ -39,7 +39,7 @@ jobs:
           ls -alhF blog
 
       - name: Generate Diagram
-        uses: githubocto/repo-visualizer@main
+        uses: thebesttv/repo-visualizer@node20
         with:
           output_file: "diagram.svg"
           excluded_paths: ".github,.gitignore"
