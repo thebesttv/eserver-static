@@ -32,11 +32,7 @@ jobs:
           # The default value (1) creates a shallow checkout.
           fetch-depth: 0
       - name: Restore mtime
-        run: |
-          sudo apt-get -y install git-restore-mtime > /dev/null
-          git restore-mtime
-          ls -alhF
-          ls -alhF blog
+        uses: chetan/git-restore-mtime-action@v2
 
       - name: Generate Diagram
         uses: thebesttv/repo-visualizer@node20
